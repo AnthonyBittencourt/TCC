@@ -2,7 +2,7 @@ import {Request, Response} from "express"
 import {prisma} from "../../config/prisma"
 import { handleErrors } from "../helpers/handleErros"
 
-export default{
+export default {
     create: async (request: Request, response: Response) => {
         try{
             const  {nome, email, cpf, data_nascimento, telefone, senha } = request.body
@@ -113,7 +113,7 @@ export default{
         }
     },
 
-    desconnect: async(request: Request, response: Response) => {
+    disconnect: async(request: Request, response: Response) => {
         try{
             const {id} = request.params
             const {contaId} = request.body

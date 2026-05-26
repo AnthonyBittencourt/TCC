@@ -24,6 +24,13 @@ enum TipoCartao{
   DEBITO
 }
 
+enum TipoTransacao {
+  DEPOSITO
+  SAQUE
+  TRANSFERENCIA
+  PAGAMENTO
+}
+
 model Cliente{
   id Int @id @default(autoincrement())
   nome String
@@ -73,7 +80,7 @@ model Cartao{
 
 model Transacao{
   id Int @id @default(autoincrement())
-  tipo String
+  tipo TipoTransacao
   valor Decimal
   dataTransacao DateTime @default(now())
 
@@ -86,6 +93,5 @@ model Funcionario{
   email String @unique
   admin Boolean
   senha String
-
   agencias Agencia[]
 }

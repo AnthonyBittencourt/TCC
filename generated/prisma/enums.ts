@@ -25,3 +25,13 @@ export const TipoCartao = {
 } as const
 
 export type TipoCartao = (typeof TipoCartao)[keyof typeof TipoCartao]
+
+
+export const TipoTransacao = {
+  DEPOSITO: 'DEPOSITO',
+  SAQUE: 'SAQUE',
+  TRANSFERENCIA: 'TRANSFERENCIA',
+  PAGAMENTO: 'PAGAMENTO'
+} as const
+
+export type TipoTransacao = (typeof TipoTransacao)[keyof typeof TipoTransacao]

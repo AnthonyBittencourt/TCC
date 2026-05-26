@@ -38,14 +38,14 @@ export type TransacaoSumAggregateOutputType = {
 
 export type TransacaoMinAggregateOutputType = {
   id: number | null
-  tipo: string | null
+  tipo: $Enums.TipoTransacao | null
   valor: runtime.Decimal | null
   dataTransacao: Date | null
 }
 
 export type TransacaoMaxAggregateOutputType = {
   id: number | null
-  tipo: string | null
+  tipo: $Enums.TipoTransacao | null
   valor: runtime.Decimal | null
   dataTransacao: Date | null
 }
@@ -179,7 +179,7 @@ export type TransacaoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type TransacaoGroupByOutputType = {
   id: number
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal
   dataTransacao: Date
   _count: TransacaoCountAggregateOutputType | null
@@ -209,7 +209,7 @@ export type TransacaoWhereInput = {
   OR?: Prisma.TransacaoWhereInput[]
   NOT?: Prisma.TransacaoWhereInput | Prisma.TransacaoWhereInput[]
   id?: Prisma.IntFilter<"Transacao"> | number
-  tipo?: Prisma.StringFilter<"Transacao"> | string
+  tipo?: Prisma.EnumTipoTransacaoFilter<"Transacao"> | $Enums.TipoTransacao
   valor?: Prisma.DecimalFilter<"Transacao"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFilter<"Transacao"> | Date | string
   conta?: Prisma.ContaListRelationFilter
@@ -228,7 +228,7 @@ export type TransacaoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.TransacaoWhereInput | Prisma.TransacaoWhereInput[]
   OR?: Prisma.TransacaoWhereInput[]
   NOT?: Prisma.TransacaoWhereInput | Prisma.TransacaoWhereInput[]
-  tipo?: Prisma.StringFilter<"Transacao"> | string
+  tipo?: Prisma.EnumTipoTransacaoFilter<"Transacao"> | $Enums.TipoTransacao
   valor?: Prisma.DecimalFilter<"Transacao"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFilter<"Transacao"> | Date | string
   conta?: Prisma.ContaListRelationFilter
@@ -251,13 +251,13 @@ export type TransacaoScalarWhereWithAggregatesInput = {
   OR?: Prisma.TransacaoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.TransacaoScalarWhereWithAggregatesInput | Prisma.TransacaoScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Transacao"> | number
-  tipo?: Prisma.StringWithAggregatesFilter<"Transacao"> | string
+  tipo?: Prisma.EnumTipoTransacaoWithAggregatesFilter<"Transacao"> | $Enums.TipoTransacao
   valor?: Prisma.DecimalWithAggregatesFilter<"Transacao"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeWithAggregatesFilter<"Transacao"> | Date | string
 }
 
 export type TransacaoCreateInput = {
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Date | string
   conta?: Prisma.ContaCreateNestedManyWithoutTransacoesInput
@@ -265,14 +265,14 @@ export type TransacaoCreateInput = {
 
 export type TransacaoUncheckedCreateInput = {
   id?: number
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Date | string
   conta?: Prisma.ContaUncheckedCreateNestedManyWithoutTransacoesInput
 }
 
 export type TransacaoUpdateInput = {
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   conta?: Prisma.ContaUpdateManyWithoutTransacoesNestedInput
@@ -280,7 +280,7 @@ export type TransacaoUpdateInput = {
 
 export type TransacaoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   conta?: Prisma.ContaUncheckedUpdateManyWithoutTransacoesNestedInput
@@ -288,20 +288,20 @@ export type TransacaoUncheckedUpdateInput = {
 
 export type TransacaoCreateManyInput = {
   id?: number
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Date | string
 }
 
 export type TransacaoUpdateManyMutationInput = {
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TransacaoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -385,15 +385,19 @@ export type TransacaoUncheckedUpdateManyWithoutContaNestedInput = {
   deleteMany?: Prisma.TransacaoScalarWhereInput | Prisma.TransacaoScalarWhereInput[]
 }
 
+export type EnumTipoTransacaoFieldUpdateOperationsInput = {
+  set?: $Enums.TipoTransacao
+}
+
 export type TransacaoCreateWithoutContaInput = {
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Date | string
 }
 
 export type TransacaoUncheckedCreateWithoutContaInput = {
   id?: number
-  tipo: string
+  tipo: $Enums.TipoTransacao
   valor: runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Date | string
 }
@@ -424,27 +428,27 @@ export type TransacaoScalarWhereInput = {
   OR?: Prisma.TransacaoScalarWhereInput[]
   NOT?: Prisma.TransacaoScalarWhereInput | Prisma.TransacaoScalarWhereInput[]
   id?: Prisma.IntFilter<"Transacao"> | number
-  tipo?: Prisma.StringFilter<"Transacao"> | string
+  tipo?: Prisma.EnumTipoTransacaoFilter<"Transacao"> | $Enums.TipoTransacao
   valor?: Prisma.DecimalFilter<"Transacao"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFilter<"Transacao"> | Date | string
 }
 
 export type TransacaoUpdateWithoutContaInput = {
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TransacaoUncheckedUpdateWithoutContaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type TransacaoUncheckedUpdateManyWithoutContaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  tipo?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo?: Prisma.EnumTipoTransacaoFieldUpdateOperationsInput | $Enums.TipoTransacao
   valor?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   dataTransacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -525,7 +529,7 @@ export type $TransacaoPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    tipo: string
+    tipo: $Enums.TipoTransacao
     valor: runtime.Decimal
     dataTransacao: Date
   }, ExtArgs["result"]["transacao"]>
@@ -953,7 +957,7 @@ export interface Prisma__TransacaoClient<T, Null = never, ExtArgs extends runtim
  */
 export interface TransacaoFieldRefs {
   readonly id: Prisma.FieldRef<"Transacao", 'Int'>
-  readonly tipo: Prisma.FieldRef<"Transacao", 'String'>
+  readonly tipo: Prisma.FieldRef<"Transacao", 'TipoTransacao'>
   readonly valor: Prisma.FieldRef<"Transacao", 'Decimal'>
   readonly dataTransacao: Prisma.FieldRef<"Transacao", 'DateTime'>
 }

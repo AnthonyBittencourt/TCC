@@ -1014,6 +1014,13 @@ export type EnumTipoCartaoFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
 
 
 /**
+ * Reference to a field of type 'TipoTransacao'
+ */
+export type EnumTipoTransacaoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TipoTransacao'>
+    
+
+
+/**
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>

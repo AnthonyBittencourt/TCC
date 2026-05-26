@@ -1,13 +1,41 @@
 import {Request, Response} from "express"
 import {prisma} from "../../config/prisma"
 import { handleErrors } from "../helpers/handleErros"
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 export default {
+    login: async(request: Request, response: Response) =>{
+        try{
+            const {email, senha} = request.body
+            const employee = await prisma.funcionario.findUnique({
+                where:{
+                    email,
+                }
+            })
+
+            if(!employee || !bcrypt.compareSync(senha, employee.senha)){
+                return response.status(404).json("Email e/ou senha inválidos")
+            }
+
+            console.log("teste");
+            const token = jwt.sign(employee, process.env.JWT_SECRET!, {
+                expiresIn: "1d"
+            })
+
+            return response.status(200).json({access_token: token})
+
+        }catch(e){
+            console.error(e);
+            return response.status(401).json()
+        }
+    },
+
     create: async (request: Request, response: Response) => {
         try{
-            const { nome, email, admin, Senha, agenciaIds } = request.body
+            const { nome, email, admin, senha, agenciaIds } = request.body
             
-            if(!nome || !email || !Senha){
+            if(!nome || !email || !senha){
                 return response.status(400).json("Dados incompletos.")
             }
 
@@ -15,7 +43,7 @@ export default {
                 nome,
                 email,
                 admin: admin || false,
-                Senha
+                senha
             }
 
             if(agenciaIds) {
@@ -46,6 +74,7 @@ export default {
         try{
             const { id } = request.params
             const funcionario = await prisma.funcionario.findUnique({
+                include: { agencias: true },
                 where: { id: +id }
             })
             return response.status(200).json(funcionario)

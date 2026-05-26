@@ -158,6 +158,23 @@ export type EnumTipoCartaoWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumTipoCartaoFilter<$PrismaModel>
 }
 
+export type EnumTipoTransacaoFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoTransacao | Prisma.EnumTipoTransacaoFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoTransacao[]
+  notIn?: $Enums.TipoTransacao[]
+  not?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel> | $Enums.TipoTransacao
+}
+
+export type EnumTipoTransacaoWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoTransacao | Prisma.EnumTipoTransacaoFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoTransacao[]
+  notIn?: $Enums.TipoTransacao[]
+  not?: Prisma.NestedEnumTipoTransacaoWithAggregatesFilter<$PrismaModel> | $Enums.TipoTransacao
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel>
+}
+
 export type BoolFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
@@ -324,6 +341,23 @@ export type NestedEnumTipoCartaoWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumTipoCartaoFilter<$PrismaModel>
   _max?: Prisma.NestedEnumTipoCartaoFilter<$PrismaModel>
+}
+
+export type NestedEnumTipoTransacaoFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoTransacao | Prisma.EnumTipoTransacaoFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoTransacao[]
+  notIn?: $Enums.TipoTransacao[]
+  not?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel> | $Enums.TipoTransacao
+}
+
+export type NestedEnumTipoTransacaoWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TipoTransacao | Prisma.EnumTipoTransacaoFieldRefInput<$PrismaModel>
+  in?: $Enums.TipoTransacao[]
+  notIn?: $Enums.TipoTransacao[]
+  not?: Prisma.NestedEnumTipoTransacaoWithAggregatesFilter<$PrismaModel> | $Enums.TipoTransacao
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTipoTransacaoFilter<$PrismaModel>
 }
 
 export type NestedBoolFilter<$PrismaModel = never> = {

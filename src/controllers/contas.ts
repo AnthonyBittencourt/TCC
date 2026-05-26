@@ -87,6 +87,158 @@ export default {
         }
     },
 
+    clientConnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {clienteId} = request.body
+
+            const contas = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    cliente: {
+                        connect: clienteId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(contas)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    clientDisconnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {clienteId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    cliente: {
+                        disconnect: clienteId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    agenciaConnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {agenciaId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    agencia: {
+                        connect: agenciaId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    agenciaDisconnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {agenciaId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    agencia: {
+                        disconnect: agenciaId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    transConnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {transacaoId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    transacao: {
+                        connect: transacaoId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    transDisconnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {transacaoId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    transacao: {
+                        disconnect: transacaoId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    cartaoConnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {cartaoId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    cartao: {
+                        connect: cartaoId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
+    cartaoDisconnect: async (request: Request, response: Response) => {
+        try{
+            const {id} = request.params
+            const {cartaoId} = request.body
+
+            const cliente = await prisma.cliente.update({
+                where: { id: +id },
+                data: {
+                    cartao: {
+                        disconnect: cartaoId.map((id: number) => ({id}))
+                    }
+                }
+            })
+            return response.status(200).json(cliente)
+        }catch(e){
+            handleErrors(e, response)
+        }
+    },
+
     delete: async (request: Request, response: Response) => {
         try{
             const { id } = request.params

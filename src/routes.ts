@@ -5,17 +5,18 @@ import contasController from "./controllers/contas"
 import funcionariosController from "./controllers/funcionarios"
 import cartoesController from "./controllers/cartoes"
 import transacoesController from "./controllers/transacoes"
+import { authentication } from "./middlewares/authentication"
 
 const routes = Router()
 
 ///////////////// CLIENTES /////////////////
-routes.get("/clientes", clientesController.list)
+routes.get("/clientes",  clientesController.list)
 routes.post("/clientes", clientesController.create)
 routes.get("/cliente/:id", clientesController.getById)
 routes.put("/clientes/:id", clientesController.update)
 routes.delete("/clientes/:id", clientesController.delete)
 routes.put("/clientes/conectar/:id", clientesController.connect)
-routes.put("/clientes/desconectar/:id", clientesController.desconnect)
+routes.put("/clientes/desconectar/:id", clientesController.disconnect)
 
 ///////////////// AGÊNCIAS /////////////////
 routes.get("/agencias", agenciasController.list)
@@ -39,6 +40,7 @@ routes.delete("/contas/:id", contasController.delete)
 ///////////////// FUNCIONARIOS /////////////////
 routes.get("/funcionarios", funcionariosController.list)
 routes.post("/funcionarios", funcionariosController.create)
+routes.post("/funcionarios/login", funcionariosController.login)
 routes.get("/funcionario/:id", funcionariosController.getById)
 routes.put("/funcionarios/:id", funcionariosController.update)
 routes.delete("/funcionarios/:id", funcionariosController.delete)

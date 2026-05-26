@@ -24,4 +24,4 @@ export function authentication(request: Request, response: Response, next: NextF
         console.error(e) 
         return response.status(401).json("Não autenticado")
     }
-}
+} 
